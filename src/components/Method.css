@@ -1,0 +1,114 @@
+.method {
+  background: var(--bg-section-alt);
+  padding: var(--space-24) 0;
+}
+
+.method-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+  box-sizing: border-box;
+}
+
+.method-separator {
+  width: 60%;
+  height: 2px;
+  margin: 0 auto var(--space-16);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #5aaed6 50%,
+    transparent 100%
+  );
+}
+
+.method-label {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2e6b9e;
+}
+
+.method-heading {
+  margin: var(--space-8) auto 0;
+  max-width: 680px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #0b1d33;
+}
+
+.method-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 600px;
+  margin: var(--space-16) auto 0;
+}
+
+.method-step {
+  display: flex;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.method-step-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+}
+
+.method-step-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a3a5c, #2e6b9e);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.method-step-line {
+  width: 2px;
+  flex: 1;
+  min-height: var(--space-8);
+  background: #e0ded7;
+}
+
+.method-step-content {
+  flex: 1;
+  padding-top: var(--space-2);
+}
+
+.method-step-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0b1d33;
+}
+
+.method-step-description {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #3d5a80;
+}
