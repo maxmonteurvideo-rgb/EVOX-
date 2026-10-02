@@ -2,8 +2,8 @@ import Link from "next/link";
 import GradientText from "@/components/GradientText";
 
 const indicators = [
-  "300 projets livrés",
-  "+50 marques satisfaites",
+  "+300 ads livrées",
+  "+30 marques satisfaites",
   "Stratégie optimisée Meta",
 ];
 

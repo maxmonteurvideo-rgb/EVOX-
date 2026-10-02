@@ -12,7 +12,7 @@ const faqItems = [
   {
     question: "Quel est le délai de livraison ?",
     answer:
-      "En moyenne, comptez 10 à 14 jours entre le brief et la livraison finale. Pour les projets urgents, on peut accélérer le processus — à discuter au cas par cas.",
+      "Comptez environ 14 jours entre le premier appel et la diffusion de vos publicités. Pour les projets urgents, on peut accélérer le processus — à discuter au cas par cas.",
   },
   {
     question: "Est-ce que vous intervenez en dehors de la Belgique ?",

@@ -1,6 +1,6 @@
 .showreel {
   background: var(--bg-primary);
-  padding: var(--space-24) 0;
+  padding: var(--space-16) 0;
 }
 
 .showreel-container {
@@ -52,12 +52,6 @@
   margin-top: var(--space-16);
 }
 
-@media (min-width: 768px) {
-  .showreel-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (min-width: 1024px) {
   .showreel-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -70,44 +64,74 @@
   align-items: center;
 }
 
+/* Cadre vertical à bordure dégradée bleue */
+.showreel-frame {
+  width: 100%;
+  max-width: 340px;
+  padding: 3px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #b8d8f0 0%, #5aaed6 50%, #2a7db5 100%);
+  box-shadow: 0 10px 36px rgba(42, 125, 181, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.showreel-item:hover .showreel-frame {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(42, 125, 181, 0.28);
+}
+
 .showreel-video {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
-  border-radius: var(--radius-md);
-  background: #e8e6df;
+  border-radius: 15px;
+  background: #f1f4f8;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
 }
 
-.showreel-item:hover .showreel-video {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+.showreel-video {
+  aspect-ratio: 9 / 16;
 }
 
-.showreel-play {
+.showreel-video video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.showreel-title {
-  margin: var(--space-3) 0 0;
+/* Légende : client + lien vers son cas */
+.showreel-client {
+  margin: var(--space-4) 0 0;
   text-align: center;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: #0b1d33;
 }
 
-.showreel-subtitle {
-  margin: var(--space-1) 0 0;
-  text-align: center;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #3d5a80;
+.showreel-case-link {
+  margin-top: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2e6b9e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.showreel-case-link:hover {
+  color: #0b1d33;
+  text-decoration: underline;
+}
+
+/* Mobile / tablette : la grille est remplacée par vidéo + cas client côte à côte */
+@media (max-width: 1023px) {
+  .showreel {
+    padding-bottom: var(--space-4);
+  }
+
+  .showreel-grid {
+    display: none;
+  }
 }

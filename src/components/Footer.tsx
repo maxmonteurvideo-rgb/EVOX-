@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./Footer.css";
 
 function InstagramIcon() {
@@ -55,7 +56,7 @@ function LinkedInIcon() {
   );
 }
 
-function WhatsAppIcon() {
+function MailIcon() {
   return (
     <svg
       width="20"
@@ -65,17 +66,21 @@ function WhatsAppIcon() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <path
-        d="M12 3C7.02944 3 3 7.02944 3 12C3 13.6567 3.44479 15.2019 4.229 16.52L3 21L7.62 19.82C8.89079 20.5377 10.4044 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+      <rect
+        x="3"
+        y="5"
+        width="18"
+        height="14"
+        rx="2.5"
         stroke="currentColor"
         strokeWidth="1.5"
-        strokeLinejoin="round"
       />
       <path
-        d="M9.5 10.5C9.7 11.9 10.6 13.4 12.1 14.9C13.6 16.4 15.1 17.3 16.5 17.5"
+        d="M4 7L12 13L20 7"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -90,31 +95,43 @@ export default function Footer() {
           <p className="footer-tagline">Agence de création Meta Ads premium</p>
         </div>
 
-        <p className="footer-copyright">
-          © 2026 EVOX. Tous droits réservés.
-        </p>
+        <div className="footer-legal">
+          <p className="footer-copyright">
+            © 2026 EVOX — Maxence Guerin · BCE 1017.672.431
+          </p>
+          <nav className="footer-legal-links" aria-label="Informations légales">
+            <Link href="/mentions-legales">Mentions légales</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/confidentialite">Confidentialité</Link>
+          </nav>
+        </div>
 
         <div className="footer-socials">
           <a
-            href="#"
+            href="https://www.instagram.com/evoxproduction/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="footer-social-link"
             aria-label="Instagram"
           >
             <InstagramIcon />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/maxence-guerin-a64ab9330/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="footer-social-link"
             aria-label="LinkedIn"
           >
             <LinkedInIcon />
           </a>
           <a
-            href="#"
+            href="mailto:contact.evox.production@gmail.com"
             className="footer-social-link"
-            aria-label="WhatsApp"
+            aria-label="Envoyer un e-mail à EVOX"
+            title="contact.evox.production@gmail.com"
           >
-            <WhatsAppIcon />
+            <MailIcon />
           </a>
         </div>
       </div>

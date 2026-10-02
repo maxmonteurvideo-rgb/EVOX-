@@ -45,13 +45,25 @@
   color: #0b1d33;
 }
 
+/* Cadre dégradé bleu, même style que le bloc offre et les vidéos */
 .faq-list {
-  max-width: 700px;
+  max-width: 760px;
   margin: var(--space-16) auto 0;
+  padding: var(--space-2) clamp(20px, 4vw, 40px);
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--bg-surface), var(--bg-surface)) padding-box,
+    linear-gradient(135deg, #b8d8f0 0%, #5aaed6 45%, #2a7db5 100%) border-box;
+  box-shadow: 0 12px 40px rgba(42, 125, 181, 0.15);
 }
 
 .faq-item {
   border-bottom: 1px solid #e0ded7;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
 }
 
 .faq-question {

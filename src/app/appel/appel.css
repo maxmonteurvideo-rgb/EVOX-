@@ -119,3 +119,46 @@
   text-align: center;
   padding: var(--space-6);
 }
+
+/* Écran d'attente avant chargement de Calendly (cookies tiers) */
+.appel-calendly-gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 650px;
+  padding: var(--space-8);
+  text-align: center;
+}
+
+.appel-calendly-gate-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0b1d33;
+}
+
+.appel-calendly-gate-text {
+  margin: var(--space-2) 0 0;
+  font-size: 1rem;
+  color: #3d5a80;
+}
+
+.appel-calendly-gate-btn {
+  margin-top: var(--space-8);
+  padding: 18px 40px;
+  font-size: 1.05rem;
+}
+
+.appel-calendly-gate-note {
+  margin: var(--space-6) 0 0;
+  max-width: 340px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #8a9ab5;
+}
+
+.appel-calendly-gate-note a {
+  color: #2e6b9e;
+}

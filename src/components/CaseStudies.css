@@ -1,0 +1,388 @@
+.cases {
+  background: var(--bg-primary);
+  padding: 0 0 var(--space-24);
+}
+
+/* Même conteneur et même gouttière que la grille vidéo → colonnes alignées */
+.cases-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+/* Flèches vidéo → cas client */
+.cases-arrows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  height: 140px;
+  margin-top: calc(-1 * var(--space-8));
+}
+
+.cases-arrow-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.cases-arrow {
+  width: 24px;
+  height: 140px;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(90, 174, 214, 0.6));
+}
+
+.cases-arrow path {
+  fill: none;
+  stroke: #5aaed6;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cases-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+/* Conteneur observé pour l'apparition (non transformé) */
+.case-slot {
+  display: flex;
+}
+
+.case-slot > .case {
+  flex: 1;
+}
+
+/* Le cadre */
+.case {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 2.2vw, 32px);
+  border-radius: 28px;
+  /* Même verre sombre que les cartes du process (« Analyse de marché ») */
+  background:
+    linear-gradient(145deg, rgba(90, 174, 214, 0.25), rgba(11, 29, 51, 0.6)),
+    #03070d;
+  border: 1px solid rgba(124, 196, 232, 0.35);
+  box-shadow: 0 0 60px rgba(42, 125, 181, 0.35), inset 0 0 40px rgba(124, 196, 232, 0.15);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Arrivée depuis « Voir le cas client » : marge sous la navbar + pulsation du glow */
+.case {
+  scroll-margin-top: 110px;
+}
+
+/* Apparition : échelle 0 → 105 % → 100 %, point d'ancrage central */
+.case {
+  transform-origin: center center;
+}
+
+.case:not(.is-in) {
+  transform: scale(0);
+}
+
+.case.is-in {
+  animation: case-pop 0.75s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes case-pop {
+  0% {
+    transform: scale(0);
+  }
+  65% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.case:target {
+  animation: case-highlight 1.6s ease-out 1;
+}
+
+@keyframes case-highlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(90, 174, 214, 0.7), 0 0 60px rgba(42, 125, 181, 0.35);
+  }
+  40% {
+    box-shadow: 0 0 0 10px rgba(90, 174, 214, 0.25), 0 0 100px rgba(42, 125, 181, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(90, 174, 214, 0), 0 0 60px rgba(42, 125, 181, 0.35);
+  }
+}
+
+.case:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 80px rgba(42, 125, 181, 0.5), inset 0 0 40px rgba(124, 196, 232, 0.2);
+}
+
+.case-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.case-logo {
+  position: relative;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(124, 196, 232, 0.35), rgba(11, 29, 51, 0.7));
+  border: 1px solid rgba(124, 196, 232, 0.5);
+  box-shadow: 0 0 20px rgba(42, 125, 181, 0.5);
+}
+
+.case-logo img {
+  object-fit: cover;
+}
+
+.case-logo span {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #b8d8f0;
+}
+
+.case-sector {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7cc4e8;
+}
+
+.case-client {
+  margin: 2px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #e6f2fa;
+}
+
+.case-points {
+  margin: var(--space-6) 0 var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.case-points dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e6f2fa;
+}
+
+.case-points dd {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(184, 216, 240, 0.85);
+}
+
+/* Résultat mis en avant, aligné en bas de chaque carte */
+.case-result {
+  margin-top: auto;
+  padding: var(--space-4) var(--space-4);
+  border-radius: 14px;
+  background: rgba(124, 196, 232, 0.08);
+  border: 1px solid rgba(124, 196, 232, 0.2);
+  border-left: 3px solid #5aaed6;
+}
+
+.case-result-label {
+  margin: 0 0 var(--space-3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7cc4e8;
+}
+
+/* Livrables en pastilles verre */
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-tags li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(124, 196, 232, 0.12);
+  border: 1px solid rgba(124, 196, 232, 0.35);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e6f2fa;
+}
+
+/* Le premier livrable (ex. « 24 ads ») ressort en dégradé */
+.case-tags li:first-child {
+  background: linear-gradient(135deg, rgba(90, 174, 214, 0.45), rgba(42, 125, 181, 0.35));
+  border-color: rgba(184, 216, 240, 0.6);
+  box-shadow: 0 0 14px rgba(90, 174, 214, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case:not(.is-in) {
+    transform: none;
+  }
+
+  .case.is-in {
+    animation: none;
+  }
+}
+
+/* Tablette / mobile : flèches masquées */
+@media (max-width: 1023px) {
+  .cases-arrows {
+    display: none;
+  }
+}
+
+/* Mobile / tablette : vidéo en petit à gauche, cas client à droite */
+.case-mobile-video {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .cases {
+    padding: var(--space-6) 0 var(--space-16);
+  }
+
+  .cases-container {
+    padding: 0 12px;
+  }
+
+  .cases-list {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .case-slot {
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .case-mobile-video {
+    display: block;
+    position: relative;
+    flex: 0 0 min(36%, 170px);
+    align-self: center;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    padding: 2px;
+    background: linear-gradient(160deg, #b8d8f0 0%, #5aaed6 50%, #2a7db5 100%);
+    box-shadow: 0 8px 24px rgba(42, 125, 181, 0.25);
+    transform-origin: center center;
+  }
+
+  .case-mobile-video:not(.is-in) {
+    transform: scale(0);
+  }
+
+  .case-mobile-video.is-in {
+    animation: case-pop 0.75s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  .case-mobile-video video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #0b1d33;
+  }
+
+  .case-slot > .case {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Carte compacte */
+  .case {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .case-header {
+    gap: 8px;
+  }
+
+  /* Numéro et étiquette « Livré » masqués : la vidéo à gauche suffit à identifier le cas */
+  .case-logo,
+  .case-result-label {
+    display: none;
+  }
+
+  .case-sector {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .case-client {
+    font-size: 1.05rem;
+  }
+
+  .case-points {
+    margin: 8px 0;
+    gap: 6px;
+  }
+
+  .case-points dt {
+    font-size: 0.65rem;
+  }
+
+  .case-points dd {
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .case-result {
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  .case-result-label {
+    margin-bottom: 6px;
+    font-size: 0.6rem;
+  }
+
+  .case-tags {
+    gap: 4px;
+  }
+
+  .case-tags li {
+    padding: 3px 8px;
+    font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-mobile-video:not(.is-in) {
+    transform: none;
+  }
+
+  .case-mobile-video.is-in {
+    animation: none;
+  }
+}

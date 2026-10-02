@@ -16,8 +16,22 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EVOX",
-  description: "Agence de création Meta Ads premium",
+  metadataBase: new URL("https://evox-agency.com"),
+  title: "EVOX — Des vidéos publicitaires Meta à l'image de votre marque",
+  description:
+    "Agence de création Meta Ads premium. Du script au montage final, des créas conçues pour convertir, avec la qualité que votre marque exige.",
+  openGraph: {
+    title: "EVOX — Des vidéos publicitaires Meta à l'image de votre marque",
+    description:
+      "Agence de création Meta Ads premium : avatar client, scripts, tournage et montage orientés conversion.",
+    url: "https://evox-agency.com",
+    siteName: "EVOX",
+    locale: "fr_BE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

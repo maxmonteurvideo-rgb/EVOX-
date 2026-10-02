@@ -1,29 +1,25 @@
+"use client";
+
+import { useIsMobile } from "./useIsMobile";
 import "./Showreel.css";
 
+/*
+ * Vidéos hébergées sur le site : déposer les MP4 compressés dans /public/videos/.
+ * Export sans piste audio — H.264, 720x1280, < 10 Mo par vidéo.
+ */
 const videos = [
-  {
-    title: "Agent immobilier",
-    subtitle: "Vidéo publicitaire · Meta Ads",
-    src: "https://www.youtube.com/embed/sA5VdW5U2bI?autoplay=1&mute=1&loop=1&playlist=sA5VdW5U2bI&controls=0&showinfo=0&rel=0",
-  },
-  {
-    title: "Artisan & expert-comptable",
-    subtitle: "Vidéo publicitaire · Meta Ads",
-    src: "https://www.youtube.com/embed/bJrYWS29zqc?autoplay=1&mute=1&loop=1&playlist=bJrYWS29zqc&controls=0&showinfo=0&rel=0",
-  },
-  {
-    title: "Formateur en posing",
-    subtitle: "Vidéo publicitaire · Meta Ads",
-    src: "https://www.youtube.com/embed/D_BgHUrSn88?autoplay=1&mute=1&loop=1&playlist=D_BgHUrSn88&controls=0&showinfo=0&rel=0",
-  },
+  { client: "Yomi Denzel", src: "/videos/1.mp4", caseId: "cas-1" },
+  { client: "Manael Posing", src: "/videos/2.mp4", caseId: "cas-2" },
+  { client: "Pharmacie", src: "/videos/3.mp4", caseId: "cas-3" },
 ];
 
 export default function Showreel() {
+  // Sur mobile, les vidéos sont affichées à côté de chaque cas client (CaseStudies)
+  const isMobile = useIsMobile();
+
   return (
     <section className="showreel">
       <div className="showreel-container">
-        <div className="showreel-separator" />
-
         <p className="showreel-label">VOTRE SECTEUR, NOTRE EXPERTISE</p>
         <h2
           className="showreel-heading"
@@ -41,36 +37,25 @@ export default function Showreel() {
         </h2>
 
         <div className="showreel-grid">
-          {videos.map((video) => (
-            <article key={video.title} className="showreel-item">
-              <div
-                className="showreel-video"
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  paddingBottom: "177.78%",
-                }}
-              >
-                <iframe
-                  src={video.src}
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: "8px",
-                  }}
-                  title={video.title}
-                />
+          {!isMobile && videos.map((video) => (
+            <article key={video.src} className="showreel-item">
+              <div className="showreel-frame">
+                <div className="showreel-video">
+                  <video
+                    src={`${video.src}#t=0.1`}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={`Publicité Meta — ${video.client}`}
+                  />
+                </div>
               </div>
-              <p className="showreel-title">{video.title}</p>
-              <p className="showreel-subtitle">{video.subtitle}</p>
+              <p className="showreel-client">{video.client}</p>
+              <a href={`#${video.caseId}`} className="showreel-case-link">
+                Voir le cas client ↓
+              </a>
             </article>
           ))}
         </div>

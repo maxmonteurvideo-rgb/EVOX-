@@ -1,0 +1,96 @@
+.offer {
+  background: var(--bg-primary);
+  padding: 0 clamp(16px, 5vw, 80px) var(--space-16);
+}
+
+/* Bordure en dégradé bleu, comme les cadres vidéo */
+.offer-frame {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #b8d8f0 0%, #5aaed6 45%, #2a7db5 100%);
+  box-shadow: 0 12px 40px rgba(42, 125, 181, 0.15);
+}
+
+.offer-card {
+  border-radius: 18px;
+  background: var(--bg-surface);
+  padding: clamp(32px, 6vw, 64px) clamp(20px, 5vw, 56px);
+  text-align: center;
+}
+
+.offer-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #0b1d33;
+}
+
+.offer-questions {
+  margin: var(--space-6) 0 0;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  font-weight: 600;
+  line-height: 1.6;
+  color: #1a3a5c;
+}
+
+.offer-promise {
+  margin: var(--space-8) 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0b1d33;
+}
+
+.offer-cta {
+  margin-top: var(--space-8);
+  padding: 18px 44px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 639px) {
+  .offer-title br,
+  .offer-questions br {
+    display: none;
+  }
+}
+
+/* Mots clés : dégradé bleu EVOX animé (fondu de couleurs) + léger glow */
+.offer .gradient-word {
+  background-image: linear-gradient(
+    90deg,
+    #7cc4e8 0%,
+    #5aaed6 25%,
+    #2a7db5 50%,
+    #5aaed6 75%,
+    #7cc4e8 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 14px rgba(90, 174, 214, 0.35));
+  animation: offer-gradient-fade 6s ease-in-out infinite alternate;
+}
+
+@keyframes offer-gradient-fade {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer .gradient-word {
+    animation: none;
+  }
+}

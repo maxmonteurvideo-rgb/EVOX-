@@ -1,3 +1,4 @@
+import CalendlyEmbed from "./CalendlyEmbed";
 import "./appel.css";
 
 const steps = [
@@ -48,13 +49,7 @@ export default function AppelPage() {
           </div>
 
           <div className="appel-calendly">
-            <iframe
-              src="https://calendly.com/contact-evox-production/30min"
-              width="100%"
-              height="700"
-              frameBorder="0"
-              style={{ borderRadius: "16px", minHeight: "650px" }}
-            />
+            <CalendlyEmbed />
           </div>
         </div>
       </div>
